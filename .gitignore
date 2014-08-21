@@ -36,4 +36,5 @@ pip-log.txt
 testem.*.*.*.json
 
 
+config/environments.php
 *.db
