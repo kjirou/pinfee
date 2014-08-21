@@ -1,5 +1,5 @@
 #!/bin/sh
-USAGE="usage: $0 {createdb|purgedb}"
+USAGE="usage: $0 {createdb|purgedb|devdata}"
 
 
 DATABASE_NAME='pinfee_dev.db'
@@ -46,4 +46,21 @@ if [ "$SUB_COMMAND" = "createdb" ]; then
 _EOT_
 elif [ "$SUB_COMMAND" = "purgedb" ]; then
   rm $DATABASE_FILE_PATH
+elif [ "$SUB_COMMAND" = "devdata" ]; then
+  sqlite3 $DATABASE_FILE_PATH << _EOT_
+    INSERT INTO products VALUES (
+      1,
+      datetime("now"),
+      "Google",
+      "http://google.com/",
+      "This is the Google."
+    );
+    INSERT INTO products VALUES (
+      2,
+      datetime("now"),
+      "Yahoo!",
+      "http://yahoo.com/",
+      "This is the Yahoo!."
+    );
+_EOT_
 fi
