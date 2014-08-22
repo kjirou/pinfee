@@ -11,10 +11,9 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
   $products[] = $row;
 }
 
-$locals = array(
+render('index.php', array(
   'products' => $products,
-);
-render('index.php', $locals);
+));
 
 after_action();
 ?>
