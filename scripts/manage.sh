@@ -51,15 +51,15 @@ elif [ "$SUB_COMMAND" = "devdata" ]; then
     INSERT INTO products VALUES (
       1,
       datetime("now"),
-      "Google",
       "http://google.com/",
+      "Google",
       "This is the Google."
     );
     INSERT INTO products VALUES (
       2,
       datetime("now"),
-      "Yahoo!",
       "http://yahoo.com/",
+      "Yahoo!",
       "This is the Yahoo!."
     );
 _EOT_
