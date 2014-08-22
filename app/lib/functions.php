@@ -3,7 +3,7 @@
 function compilteTemplate($filePath, $values = array()) {
     extract($values);
     ob_start();
-    include($filePath);
+    require $filePath;
     $output = ob_get_contents();
     ob_end_clean();
     return $output;
