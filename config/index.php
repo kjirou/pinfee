@@ -5,8 +5,8 @@ require_once '../config/environments.php';
 define('ROOT', '..');
 define('APP_ROOT', ROOT . '/app');
 define('DB_ROOT', ROOT . '/db');
-define('LIB_ROOT', APP_ROOT . '/lib');
-define('TEMPLATES_ROOT', APP_ROOT . '/templates');
+define('LIB_ROOT', ROOT . '/lib');
+define('TEMPLATES_ROOT', ROOT . '/templates');
 
 
 define('ENCODING', 'UTF-8');
