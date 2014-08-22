@@ -14,7 +14,7 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
 $locals = array(
   'products' => $products,
 );
-echo render('index.php', $locals);
+render('index.php', $locals);
 
 after_action();
 ?>
