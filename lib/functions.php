@@ -13,18 +13,18 @@ function after_action() {
   $db->close();
 }
 
-function compilteTemplate($filePath, $locals = array()) {
+function compilte_template($file_path, $locals = array()) {
     extract($locals);
     ob_start();
-    require $filePath;
+    require $file_path;
     $output = ob_get_contents();
     ob_end_clean();
     return $output;
 }
 
-function render($templateFilePath, $locals = array()) {
-    $filePath = TEMPLATES_ROOT . '/' . $templateFilePath;
-    echo compilteTemplate($filePath, $locals);
+function render($template_file_path, $locals = array()) {
+    $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
+    echo compilte_template($file_path, $locals);
 }
 
 function h($string) {
