@@ -1,4 +1,9 @@
 <html>
+<head>
+  <?php render('partials/meta_tags.php') ?>
+  <title>Pinfee</title>
+  <?php render('partials/assets.php') ?>
+</head>
 <body>
   <?php render('partials/header.php') ?>
 
