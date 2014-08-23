@@ -9,7 +9,7 @@
 
   <ul>
   <?php foreach ($products as $index => $row) : ?>
-    <li><a href="<?= h($row['url']) ?>" target="_blank"><?= h($row['title']) ?></a></li>
+    <li><a href="/products/show.php?id=<?= h($row['id']) ?>"><?= h($row['title']) ?></a></li>
   <?php endforeach ?>
   </ul>
 
