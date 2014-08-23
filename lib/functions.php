@@ -13,7 +13,7 @@ function after_action() {
     $db->close();
 }
 
-function compilte_template($file_path, $locals = array()) {
+function compile_template($file_path, $locals = array()) {
     extract($locals, EXTR_SKIP);
     ob_start();
     require $file_path;
@@ -24,7 +24,7 @@ function compilte_template($file_path, $locals = array()) {
 
 function render($template_file_path, $locals = array()) {
     $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
-    echo compilte_template($file_path, $locals);
+    echo compile_template($file_path, $locals);
 }
 
 function h($string) {
