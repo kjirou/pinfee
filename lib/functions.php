@@ -5,9 +5,6 @@ function get_db_object() {
     return $_DB;
 }
 
-function initialize() {
-}
-
 function finalize() {
     $db = get_db_object();
     $db->close();

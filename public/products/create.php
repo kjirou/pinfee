@@ -1,8 +1,6 @@
 <?php
 require_once '../../config/index.php';
 
-initialize();
-
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         $locals = create_locals(array(

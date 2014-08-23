@@ -1,8 +1,6 @@
 <?php
 require_once '../config/index.php';
 
-initialize();
-
 $db = get_db_object();
 $sql = 'SELECT * FROM products;';
 $cursor = $db->query($sql);
