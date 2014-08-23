@@ -12,7 +12,5 @@ while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
 $locals = create_locals(array(
     'products' => $products,
 ));
-render('index.php', $locals);
-
-finalize();
+render_and_exit('index.php', $locals);
 ?>

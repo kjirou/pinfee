@@ -23,10 +23,20 @@ function get_db_object() {
     return $_DB;
 }
 
-function finalize() {
+/**
+ * プロセスを終了する
+ *
+ * config による初期化の後始末、バッチ処理の終了にも使う
+ */
+function exit_process() {
     $db = get_db_object();
     $db->close();
     exit(0);
+}
+
+/** HTTP プロセスを終了する */
+function exit_http() {
+    exit_process();
 }
 
 function redirect($url_or_path, $options = array()) {
@@ -34,7 +44,7 @@ function redirect($url_or_path, $options = array()) {
         'code' => null,
     ), $options);
     header("Location: $url_or_path", true, $options['code']);
-    finalize();
+    exit_http();
 }
 
 function create_locals($locals = array()) {
@@ -51,9 +61,25 @@ function compile_template($file_path, $locals = array()) {
     return $output;
 }
 
-function render($template_file_path, $locals = array()) {
+function _render($template_file_path, $locals = array(), $options = array()) {
+    $options = array_merge(array(
+        'should_exit' => false,
+    ), $options);
     $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
     echo compile_template($file_path, $locals);
+    if ($options['should_exit']) {
+        exit_http();
+    }
+}
+
+/** テンプレートを描画する、終了はしない */
+function render($template_file_path, $locals = array()) {
+    return _render($template_file_path, $locals);
+}
+
+/** テンプレートを描画して終了する */
+function render_and_exit($template_file_path, $locals = array()) {
+    return _render($template_file_path, $locals, array('should_exit' => true));
 }
 
 function h($string) {

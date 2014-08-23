@@ -13,7 +13,7 @@ $errors = array(
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        render('products/create.php', create_locals(array(
+        render_and_exit('products/create.php', create_locals(array(
             'inputs' => $inputs,
             'errors' => $errors,
         )));
@@ -30,7 +30,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if (array_any($errors) > 0) {
-            render('products/create.php', create_locals(array(
+            render_and_exit('products/create.php', create_locals(array(
                 'inputs' => $inputs,
                 'errors' => $errors,
             )));
@@ -60,6 +60,4 @@ switch ($_SERVER['REQUEST_METHOD']) {
         redirect('/');
         break;
 }
-
-finalize();
 ?>
