@@ -11,11 +11,11 @@ function finalize() {
     exit(0);
 }
 
-function redirect($url, $options = array()) {
+function redirect($url_or_path, $options = array()) {
     $options = array_merge(array(
         'code' => null,
     ), $options);
-    header("Location: $url", true, $options['code']);
+    header("Location: $url_or_path", true, $options['code']);
     finalize();
 }
 
