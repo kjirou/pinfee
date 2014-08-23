@@ -9,12 +9,18 @@ pinfee
 ```
 git clone git@github.com:kjirou/pinfee.git
 cd pinfee
+./scripts/manage.sh init
 cp config/environments.example.php config/environments.php
-chmod 0777 db
 ```
 
 
 ### コマンドを使う
+
+アプリケーションを初期化する:
+
+```
+./scripts/manage.sh init
+```
 
 データベースを作る:
 

@@ -65,4 +65,9 @@ elif [ "$SUB_COMMAND" = "devdata" ]; then
       "This is the Yahoo!."
     );
 _EOT_
+elif [ "$SUB_COMMAND" = "initperm" ]; then
+  chmod 0777 $DB_ROOT
+elif [ "$SUB_COMMAND" = "init" ]; then
+  $0 initperm
+  $0 createdb
 fi
