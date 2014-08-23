@@ -1,3 +1,9 @@
 <header>
-  <h1>Pinfee</h1>
+  <h1><a href="/">Pinfee</a></h1>
+  <nav>
+    <ul>
+      <li><a href="/products/create.php">サービスを登録する</a></li>
+      <li><a href="javascript:void(0)">(検索フォームを開く)</a></li>
+    </ul>
+  </nav>
 </header>

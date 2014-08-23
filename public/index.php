@@ -1,7 +1,7 @@
 <?php
 require_once '../config/index.php';
 
-before_action();
+initialize();
 
 $db = get_db_object();
 $sql = 'SELECT * FROM products;';
@@ -16,5 +16,5 @@ $locals = create_locals(array(
 ));
 render('index.php', $locals);
 
-after_action();
+finalize();
 ?>

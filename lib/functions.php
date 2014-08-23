@@ -5,12 +5,21 @@ function get_db_object() {
     return $_DB;
 }
 
-function before_action() {
+function initialize() {
 }
 
-function after_action() {
+function finalize() {
     $db = get_db_object();
     $db->close();
+    exit(0);
+}
+
+function redirect($url, $options = array()) {
+    $options = array_merge(array(
+        'code' => null,
+    ), $options);
+    header("Location: $url", true, $options['code']);
+    exit(0);
 }
 
 function create_locals($locals = array()) {
