@@ -57,7 +57,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $stmt->bindValue(':description', $inputs['description'], SQLITE3_TEXT);
         $stmt->execute();
 
-        redirect('/');
+        redirect("/products/show.php?id={$db->lastInsertRowID()}");
         break;
 }
 ?>
