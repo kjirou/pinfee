@@ -9,8 +9,8 @@ function before_action() {
 }
 
 function after_action() {
-  $db = get_db_object();
-  $db->close();
+    $db = get_db_object();
+    $db->close();
 }
 
 function compilte_template($file_path, $locals = array()) {
