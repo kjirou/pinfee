@@ -1,6 +1,6 @@
 <html>
 <body>
-  <h1>Top Page</h1>
+  <?php render('partials/header.php') ?>
 
   <ul>
   <?php foreach ($products as $index => $row) : ?>
@@ -8,7 +8,6 @@
   <?php endforeach ?>
   </ul>
 
-  <footer>
-  </footer>
+  <?php render('partials/footer.php') ?>
 </body>
 </html>

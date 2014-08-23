@@ -8,12 +8,13 @@ $sql = 'SELECT * FROM products;';
 $result = $db->query($sql);
 $products = array();
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-  $products[] = $row;
+    $products[] = $row;
 }
 
-render('index.php', array(
-  'products' => $products,
+$locals = create_locals(array(
+    'products' => $products,
 ));
+render('index.php', $locals);
 
 after_action();
 ?>
