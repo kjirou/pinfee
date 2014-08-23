@@ -8,8 +8,9 @@ pinfee
 
 ```
 git clone git@github.com:kjirou/pinfee.git
-cd ./pinfee
+cd pinfee
 cp config/environments.example.php config/environments.php
+chmod 0777 db
 ```
 
 

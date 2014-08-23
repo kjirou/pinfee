@@ -44,6 +44,8 @@ if [ "$SUB_COMMAND" = "createdb" ]; then
     description TEXT
   );
 _EOT_
+  # ファイルとディレクトリ両方に書き込み権限を設定しないと Apache から更新できない
+  chmod 0777 $DATABASE_FILE_PATH
 elif [ "$SUB_COMMAND" = "purgedb" ]; then
   rm $DATABASE_FILE_PATH
 elif [ "$SUB_COMMAND" = "devdata" ]; then

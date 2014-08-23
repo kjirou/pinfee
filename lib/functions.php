@@ -1,5 +1,23 @@
 <?php
 
+function array_all($array) {
+    foreach ($array as $value) {
+        if (!$value) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function array_any($array) {
+    foreach ($array as $value) {
+        if ($value) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function get_db_object() {
     global $_DB;
     return $_DB;
@@ -40,4 +58,8 @@ function render($template_file_path, $locals = array()) {
 
 function h($string) {
     return htmlspecialchars($string, ENT_QUOTES, ENCODING);
+}
+
+function validate_url($string) {
+    return preg_match('/^https?:\\/\\//', $string) > 0;
 }
