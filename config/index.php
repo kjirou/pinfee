@@ -1,12 +1,13 @@
 <?php
-require_once '../config/environments.php';
-
-
-define('ROOT', '..');
+define('ROOT', dirname(__FILE__) . '/..');
 define('APP_ROOT', ROOT . '/app');
 define('DB_ROOT', ROOT . '/db');
 define('LIB_ROOT', ROOT . '/lib');
 define('TEMPLATES_ROOT', ROOT . '/templates');
+set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
+
+
+require_once 'config/environments.php';
 
 
 define('ENCODING', 'UTF-8');
