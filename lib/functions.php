@@ -14,7 +14,7 @@ function after_action() {
 }
 
 function compilte_template($file_path, $locals = array()) {
-    extract($locals);
+    extract($locals, EXTR_SKIP);
     ob_start();
     require $file_path;
     $output = ob_get_contents();
