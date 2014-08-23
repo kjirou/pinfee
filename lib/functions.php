@@ -16,7 +16,7 @@ function redirect($url, $options = array()) {
         'code' => null,
     ), $options);
     header("Location: $url", true, $options['code']);
-    exit(0);
+    finalize();
 }
 
 function create_locals($locals = array()) {
