@@ -5,9 +5,9 @@ before_action();
 
 $db = get_db_object();
 $sql = 'SELECT * FROM products;';
-$result = $db->query($sql);
+$cursor = $db->query($sql);
 $products = array();
-while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
     $products[] = $row;
 }
 
