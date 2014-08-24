@@ -25,11 +25,11 @@ if (!$product) {
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        render_and_exit('comments/create.php', create_locals(array(
+        render_and_exit('comments/create.php', array(
             'inputs' => $inputs,
             'errors' => $errors,
             'product' => $product,
-        )));
+        ));
         break;
 
     case 'POST':
@@ -38,11 +38,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if (array_any($errors) > 0) {
-            render_and_exit('comments/create.php', create_locals(array(
+            render_and_exit('comments/create.php', array(
                 'inputs' => $inputs,
                 'errors' => $errors,
                 'product' => $product,
-            )));
+            ));
             break;
         }
 

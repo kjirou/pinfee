@@ -65,11 +65,6 @@ function redirect($url_or_path, $options = array()) {
     exit_http();
 }
 
-function create_locals($locals = array()) {
-    $defaults = array();
-    return array_merge($locals, $defaults);
-}
-
 function compile_template($file_path, $locals = array()) {
     extract($locals, EXTR_SKIP);
     ob_start();

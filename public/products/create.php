@@ -13,10 +13,10 @@ $errors = array(
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        render_and_exit('products/create.php', create_locals(array(
+        render_and_exit('products/create.php', array(
             'inputs' => $inputs,
             'errors' => $errors,
-        )));
+        ));
         break;
 
     case 'POST':
@@ -30,10 +30,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if (array_any($errors) > 0) {
-            render_and_exit('products/create.php', create_locals(array(
+            render_and_exit('products/create.php', array(
                 'inputs' => $inputs,
                 'errors' => $errors,
-            )));
+            ));
             break;
         }
 

@@ -9,9 +9,8 @@ while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
     $products[] = $row;
 }
 
-$locals = create_locals(array(
+render_and_exit('index.php', array(
     'products' => $products,
     'notification' => get_flash($FLASH_KEYS['pages.index.notification']),
 ));
-render_and_exit('index.php', $locals);
 ?>
