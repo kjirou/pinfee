@@ -5,6 +5,7 @@
 //
 define('ROOT', dirname(__FILE__) . '/..');
 define('APP_ROOT', ROOT . '/app');
+define('CONFIG_ROOT', ROOT . '/config');
 define('DB_ROOT', ROOT . '/db');
 define('LIB_ROOT', ROOT . '/lib');
 define('TEMPLATES_ROOT', ROOT . '/templates');
@@ -50,3 +51,13 @@ $_DB = new SQLite3(DB_ROOT . '/' . DATABASE_FILE_NAME);
 // Requirements
 //
 require_once LIB_ROOT . '/functions.php';
+
+
+//
+// Configuration by Server API
+//
+if (php_sapi_name() === 'cli') {
+    require_once CONFIG_ROOT . '/cli.php';
+} else {
+    require_once CONFIG_ROOT . '/http.php';
+}
