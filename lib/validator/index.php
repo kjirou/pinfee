@@ -1,5 +1,5 @@
 <?php
-namespace Validation;
+namespace validation;
 
 
 function validate_url($string) {
