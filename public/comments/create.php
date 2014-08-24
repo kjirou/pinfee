@@ -12,7 +12,7 @@ $errors = array(
 $get_product = function($product_id) {
     $db = get_db_object();
     $stmt = $db->prepare('SELECT * FROM products WHERE id = :id');
-    $stmt->bindValue($product_id, SQLITE3_INTEGER);
+    $stmt->bindValue('id', $product_id, SQLITE3_INTEGER);
     $cursor = $stmt->execute();
     return $cursor->fetchArray(SQLITE3_ASSOC);
 };
