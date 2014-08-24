@@ -18,6 +18,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 // Environments, Consts and Global Variables
 //
 require_once 'config/environments.php';
+define('SITE_NAME', 'Pinfee');
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');
 $FLASH_KEYS = array(

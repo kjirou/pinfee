@@ -1,5 +1,5 @@
 <header>
-  <h1><a href="/">Pinfee</a></h1>
+  <h1><a href="/"><?= h($site_name) ?></a></h1>
   <nav>
     <ul>
       <li><a href="/products/create.php">サービスを登録する</a></li>

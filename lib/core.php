@@ -79,12 +79,19 @@ function compile_template($file_path, $locals = array()) {
     return $output;
 }
 
+/** render 時に必ず渡される変数を生成する */
+function create_static_locals() {
+    return array(
+        'site_name' => SITE_NAME,
+    );
+}
+
 function _render($template_file_path, $locals = array(), $options = array()) {
     $options = array_merge(array(
         'should_exit' => false,
     ), $options);
     $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
-    echo compile_template($file_path, $locals);
+    echo compile_template($file_path, array_merge($locals, create_static_locals()));
     if ($options['should_exit']) {
         exit_http();
     }
