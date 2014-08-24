@@ -21,11 +21,30 @@
       <?php endif ?>
     </ul>
 
-    <ul>
-    <?php foreach ($comments as $index => $comment) : ?>
-      <li>(<?= h($comment['created_at']) ?>) <?= h($comment['body']) ?></li>
-    <?php endforeach ?>
-    </ul>
+    <div>
+      <?php if ($comment_count > 0) : ?>
+      <p><?= $comment_count ?> のレビューをいただいています。</p>
+      <?php endif ?>
+
+      <div>
+        <a href="#comment_form">レビューを書く</a>
+      </div>
+
+      <ul>
+      <?php foreach ($comments as $index => $comment) : ?>
+        <li>(<?= h($comment['created_at']) ?>) <?= h($comment['body']) ?></li>
+      <?php endforeach ?>
+      </ul>
+
+      <form id="comment_form" action="/comments/create.php?product_id=<?= h($product['id']) ?>" method="post">
+        <div>
+          <textarea name="body"></textarea>
+        </div>
+        <div>
+          <input type="submit" value="レビューを投稿する" />
+        </div>
+      </form>
+    </div>
   </div>
 
   <?php render('partials/footer.php') ?>

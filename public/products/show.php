@@ -27,6 +27,7 @@ while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
 $locals = create_locals(array(
     'product' => $product,
     'comments' => $comments,
+    'comment_count' => count($comments),
     'notification' => get_flash($FLASH_KEYS['pages.products.show.notification']),
 ));
 render_and_exit('products/show.php', $locals);
