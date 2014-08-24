@@ -1,5 +1,5 @@
 #!/bin/sh
-USAGE="usage: $0 {createdb|purgedb|devdata}"
+USAGE="usage: $0 {createdb|purgedb|initperm|init}"
 
 
 DATABASE_NAME='pinfee_dev.db'
@@ -51,32 +51,31 @@ if [ "$SUB_COMMAND" = "createdb" ]; then
     body TEXT,
     FOREIGN KEY(product_id) REFERENCES products(id)
   );
+  CREATE TABLE IF NOT EXISTS recipients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    created_at DATETIME NOT NULL,
+    email TEXT NOT NULL,
+    canceled_at DATETIME
+  );
 _EOT_
   # ファイルとディレクトリ両方に書き込み権限を設定しないと Apache から更新できない
   chmod 0777 $DATABASE_FILE_PATH
 elif [ "$SUB_COMMAND" = "purgedb" ]; then
   rm $DATABASE_FILE_PATH
-elif [ "$SUB_COMMAND" = "devdata" ]; then
-  sqlite3 $DATABASE_FILE_PATH << _EOT_
-    INSERT INTO products VALUES (
-      1,
-      datetime("now"),
-      "http://google.com/",
-      "Google",
-      "This is the Google."
-    );
-    INSERT INTO products VALUES (
-      2,
-      datetime("now"),
-      "http://yahoo.com/",
-      "Yahoo!",
-      "This is the Yahoo!."
-    );
-_EOT_
 elif [ "$SUB_COMMAND" = "initperm" ]; then
   chmod 0777 $DB_ROOT
   chmod 0777 $TMP_ROOT
 elif [ "$SUB_COMMAND" = "init" ]; then
   $0 initperm
   $0 createdb
+elif [ "$SUB_COMMAND" = "reset" ]; then
+  echo 'Reset application? [y/n]'
+  read answer
+  case $answer in
+    'y' | 'Y')
+      $0 purgedb
+      $0 init
+      break
+      ;;
+  esac
 fi
