@@ -13,9 +13,18 @@
 
   <div>
     <h2><?= h($product['title']) ?></h2>
+
     <ul>
       <li><a href="<?= h($product['url']) ?>" target="_blank"><?= h($product['url']) ?></a></li>
-      <li><?= h($product['description']) ?></li>
+      <?php if ($product['description']) : ?>
+        <li><?= h($product['description']) ?></li>
+      <?php endif ?>
+    </ul>
+
+    <ul>
+    <?php foreach ($comments as $index => $comment) : ?>
+      <li>(<?= h($comment['created_at']) ?>) <?= h($comment['body']) ?></li>
+    <?php endforeach ?>
     </ul>
   </div>
 

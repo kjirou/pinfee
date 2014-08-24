@@ -64,7 +64,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $stmt->bindValue(':body', $inputs['body'], SQLITE3_TEXT);
         $stmt->execute();
 
-        set_flash($FLASH_KEYS['pages.products.show.notification'], 'レビューを登録しました。');
+        set_flash($FLASH_KEYS['pages.products.show.notification'], 'レビューを投稿しました。');
 
         redirect("/products/show.php?id={$product['id']}");
         break;
