@@ -31,6 +31,7 @@ fi
 SCRIPT_ROOT=$(cd $(dirname $0) && pwd)
 ROOT=$SCRIPT_ROOT/..
 DB_ROOT=$ROOT/db
+TMP_ROOT=$ROOT/tmp
 DATABASE_FILE_PATH=$DB_ROOT/$DATABASE_NAME
 
 
@@ -67,6 +68,7 @@ elif [ "$SUB_COMMAND" = "devdata" ]; then
 _EOT_
 elif [ "$SUB_COMMAND" = "initperm" ]; then
   chmod 0777 $DB_ROOT
+  chmod 0777 $TMP_ROOT
 elif [ "$SUB_COMMAND" = "init" ]; then
   $0 initperm
   $0 createdb

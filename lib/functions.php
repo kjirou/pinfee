@@ -39,6 +39,21 @@ function exit_http() {
     exit_process();
 }
 
+/** セッションへ flash 変数(一度だけ抽出できる変数)を格納する */
+function set_flash($key, $value) {
+    $_SESSION[SESSION_FLASHES_NAMESPACE][$key] = $value;
+}
+
+/** セッションから flash 変数を取得する */
+function get_flash($key) {
+    $value = null;
+    if (array_key_exists($key, $_SESSION[SESSION_FLASHES_NAMESPACE])) {
+        $value = $_SESSION[SESSION_FLASHES_NAMESPACE][$key];
+        unset($_SESSION[SESSION_FLASHES_NAMESPACE][$key]);
+    }
+    return $value;
+}
+
 function redirect($url_or_path, $options = array()) {
     $options = array_merge(array(
         'code' => null,

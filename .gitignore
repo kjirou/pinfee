@@ -37,4 +37,5 @@ testem.*.*.*.json
 
 
 config/environments.php
+tmp/*
 *.db
