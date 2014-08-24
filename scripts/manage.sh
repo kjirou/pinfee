@@ -37,12 +37,19 @@ DATABASE_FILE_PATH=$DB_ROOT/$DATABASE_NAME
 
 if [ "$SUB_COMMAND" = "createdb" ]; then
   sqlite3 $DATABASE_FILE_PATH << _EOT_
-  CREATE TABLE products (
+  CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     created_at DATETIME NOT NULL,
     url TEXT NOT NULL,
     title TEXT,
     description TEXT
+  );
+  CREATE TABLE IF NOT EXISTS comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    created_at DATETIME NOT NULL,
+    product_id INTEGER NOT NULL,
+    body TEXT,
+    FOREIGN KEY(product_id) REFERENCES products(id)
   );
 _EOT_
   # ファイルとディレクトリ両方に書き込み権限を設定しないと Apache から更新できない

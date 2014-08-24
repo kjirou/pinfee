@@ -7,6 +7,8 @@
 <body>
   <?php render('partials/header.php') ?>
 
+  <h2>サービスを登録する</h2>
+
   <form action="./create.php" method="post">
     <div>
       <input type="text" name="title" value="<?= h($inputs['title']) ?>" placeholder="例えば、Pinfee" />
