@@ -18,7 +18,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        if (!Validation\validate_email($inputs['email'])) {
+        if (!validation\validate_email($inputs['email'])) {
             $errors['email'] = true;
         }
 
