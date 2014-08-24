@@ -8,7 +8,7 @@
   <?php render('partials/header.php') ?>
 
   <?php if ($notification) : ?>
-  <p><?= h($notification) ?></p>
+  <?php render('partials/notification.php', array('notification' => $notification)) ?>
   <?php endif ?>
 
   <div>

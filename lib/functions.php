@@ -23,11 +23,7 @@ function get_db_object() {
     return $_DB;
 }
 
-/**
- * プロセスを終了する
- *
- * config による初期化の後始末、バッチ処理の終了にも使う
- */
+/** プロセスを終了する。バッチ終了時にも使用する */
 function exit_process() {
     $db = get_db_object();
     $db->close();
@@ -36,6 +32,13 @@ function exit_process() {
 
 /** HTTP プロセスを終了する */
 function exit_http() {
+    $db = get_db_object();
+    $db_result_code = $db->lastErrorCode();
+    // Ref) http://www.sqlite.org/c3ref/c_abort.html
+    if (0 < $db_result_code && $db_result_code < 100) {
+      var_dump('SQLite3 error ocurred.', $db->lastErrorMsg);
+    }
+
     exit_process();
 }
 
@@ -102,5 +105,11 @@ function h($string) {
 }
 
 function validate_url($string) {
+    // FILTER_VALIDATE_URL は、国際化ドメイン未対応なので使えなかった
     return preg_match('/^https?:\\/\\//', $string) > 0;
+}
+
+function validate_email($string) {
+    // 検証ロジック参考) http://stackoverflow.com/questions/19220158/
+    return !!filter_var($string, FILTER_VALIDATE_EMAIL);
 }

@@ -21,6 +21,7 @@ require_once 'config/environments.php';
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');
 $FLASH_KEYS = array(
+    'pages.index.notification' => 'pages.index.notification',
     'pages.products.show.notification' => 'pages.products.show.notification',
 );
 

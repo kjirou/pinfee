@@ -24,7 +24,6 @@ if (!$product) {
 }
 
 switch ($_SERVER['REQUEST_METHOD']) {
-    // 本番では使ってない
     case 'GET':
         render_and_exit('comments/create.php', create_locals(array(
             'inputs' => $inputs,
