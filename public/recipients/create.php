@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/index.php';
 
+
 $inputs = array_merge(array(
     'email' => '',
 ), $_POST);
@@ -17,7 +18,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        if (!validate_email($inputs['email'])) {
+        if (!Validation\validate_email($inputs['email'])) {
             $errors['email'] = true;
         }
 

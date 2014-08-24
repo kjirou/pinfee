@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $inputs = array_merge($inputs, $_POST);
 
-        if (!validate_url($inputs['url'])) {
+        if (!Validation\validate_url($inputs['url'])) {
             $errors['url'] = true;
         }
         if ($inputs['title'] === '') {
