@@ -18,6 +18,7 @@ if (!$product) {
 
 $locals = create_locals(array(
     'product' => $product,
+    'notification' => get_flash($FLASH_KEYS['pages.products.show.notification']),
 ));
 render_and_exit('products/show.php', $locals);
 ?>

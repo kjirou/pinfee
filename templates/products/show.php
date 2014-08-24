@@ -7,6 +7,10 @@
 <body>
   <?php render('partials/header.php') ?>
 
+  <?php if ($notification) : ?>
+  <p><?= h($notification) ?></p>
+  <?php endif ?>
+
   <div>
     <h2><?= h($product['title']) ?></h2>
     <ul>

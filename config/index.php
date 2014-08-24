@@ -19,6 +19,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 require_once 'config/environments.php';
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');
+$FLASH_KEYS = array(
+    'pages.products.show.notification' => 'pages.products.show.notification',
+);
 
 
 //

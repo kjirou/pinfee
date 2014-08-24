@@ -57,6 +57,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $stmt->bindValue(':description', $inputs['description'], SQLITE3_TEXT);
         $stmt->execute();
 
+        set_flash($FLASH_KEYS['pages.products.show.notification'], 'サービスを登録しました。');
+
         redirect("/products/show.php?id={$db->lastInsertRowID()}");
         break;
 }
