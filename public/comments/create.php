@@ -68,7 +68,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $stmt = $db->prepare('SELECT count(id) FROM comments WHERE product_id = :product_id;');
         $stmt->bindValue(':product_id', $product['id'], SQLITE3_INTEGER);
         $cursor = $stmt->execute();
-        $comment_count = $cursor->fetchArray()[0];
+        // PHP5.3対応 Ref) #29
+        //$comment_count = $cursor->fetchArray()[0];
+        $_tmp = $cursor->fetchArray();
+        $comment_count = $_tmp[0];
 
         // コメント数を更新
         $stmt = $db->prepare('UPDATE products SET comment_count = :comment_count WHERE id = :id');
