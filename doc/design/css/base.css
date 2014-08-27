@@ -1,0 +1,77 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+/* ref) http://kojika17.com/2013/06/clearfix-2013.html */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+
+body {
+  margin: 0 auto;
+  padding-top: 48px;
+  width: 320px;
+  border: solid 1px #000;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 320px;
+  height: 48px;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+header h1 {
+  position: absolute;
+  mergin: 0;
+  top: 0;
+  height: 100%;
+  width: 30%;
+  z-index: 1;
+}
+
+header nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+}
+
+header nav ul li {
+  margin-left: 5px;
+  float: left;
+}
+
+.more {
+  margin-top: 10px;
+  text-align: center;
+}
+
+footer h6 {
+  text-align: center;
+  text-border: bold;
+}
+
+footer p {
+  font-size: 0.5em;
+  text-align: center;
+}
+
+footer form {
+  text-align: center;
+}
+
+footer div {
+  text-align: center;
+}
