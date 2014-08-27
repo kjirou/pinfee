@@ -19,11 +19,13 @@
       <?php if ($product['description']) : ?>
         <li><?= h($product['description']) ?></li>
       <?php endif ?>
+      <li><?= h($product['comment_count']) ?> comment(s)</li>
+      <li><?= h($product['like_count']) ?> like(s)</li>
     </ul>
 
     <div>
-      <?php if ($comment_count > 0) : ?>
-      <p><?= $comment_count ?> のレビューをいただいています。</p>
+      <?php if ($product['comment_count'] > 0) : ?>
+      <p><?= $product['comment_count'] ?> のレビューをいただいています。</p>
       <?php endif ?>
 
       <div>

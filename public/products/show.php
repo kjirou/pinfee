@@ -27,7 +27,6 @@ while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
 render_and_exit('products/show.php', array(
     'product' => $product,
     'comments' => $comments,
-    'comment_count' => $product['comment_count'],
     'notification' => get_flash($FLASH_KEYS['pages.products.show.notification']),
 ));
 ?>
