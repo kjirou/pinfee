@@ -38,6 +38,7 @@ header h1 {
   top: 0;
   height: 100%;
   width: 30%;
+  z-index: 1;
 }
 
 header nav {
