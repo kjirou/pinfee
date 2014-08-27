@@ -46,6 +46,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             break;
         }
 
+        // コメントの登録
         $db = get_db_object();
         $sql = '
             INSERT INTO comments (
@@ -59,8 +60,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
             );
         ';
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':product_id', $inputs['product_id'], SQLITE3_INTEGER);
+        $stmt->bindValue(':product_id', $product['id'], SQLITE3_INTEGER);
         $stmt->bindValue(':body', $inputs['body'], SQLITE3_TEXT);
+        $stmt->execute();
+
+        // 現コメント数を取得
+        $stmt = $db->prepare('SELECT count(id) FROM comments WHERE product_id = :product_id;');
+        $stmt->bindValue(':product_id', $product['id'], SQLITE3_INTEGER);
+        $cursor = $stmt->execute();
+        $comment_count = $cursor->fetchArray()[0];
+
+        // コメント数を更新
+        $stmt = $db->prepare('UPDATE products SET comment_count = :comment_count WHERE id = :id');
+        $stmt->bindValue(':comment_count', $comment_count, SQLITE3_INTEGER);
+        $stmt->bindValue(':id', $product['id'], SQLITE3_INTEGER);
         $stmt->execute();
 
         set_flash($FLASH_KEYS['pages.products.show.notification'], 'レビューを投稿しました。');

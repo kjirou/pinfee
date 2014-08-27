@@ -42,7 +42,9 @@ if [ "$SUB_COMMAND" = "createdb" ]; then
     created_at DATETIME NOT NULL,
     url TEXT NOT NULL,
     title TEXT,
-    description TEXT
+    description TEXT,
+    like_count INTEGER NOT NULL DEFAULT 0,
+    comment_count INTEGER NOT NULL DEFAULT 0
   );
   CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

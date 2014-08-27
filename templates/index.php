@@ -19,6 +19,8 @@
       <?php if ($product['description']) : ?>
         <li><?= h($product['description']) ?></li>
       <?php endif ?>
+      <li><?= h($product['like_count']) ?> like(s)</li>
+      <li><?= h($product['comment_count']) ?> comment(s)</li>
     </ul>
   </div>
   <?php endforeach ?>
