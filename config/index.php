@@ -53,7 +53,7 @@ $_DB = new SQLite3(DB_ROOT . '/' . DATABASE_FILE_NAME);
 // Requirements
 //
 require_once LIB_ROOT . '/core.php';
-require_once LIB_ROOT . '/Validation/index.php';
+require_once LIB_ROOT . '/validation/index.php';
 
 
 //
