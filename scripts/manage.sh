@@ -1,5 +1,5 @@
 #!/bin/sh
-USAGE="usage: $0 {createdb|purgedb|initperm|init}"
+USAGE="usage: $0 {server|createdb|purgedb|initperm|init|reset}"
 
 
 DATABASE_NAME='pinfee_dev.db'
@@ -31,11 +31,15 @@ fi
 SCRIPT_ROOT=$(cd $(dirname $0) && pwd)
 ROOT=$SCRIPT_ROOT/..
 DB_ROOT=$ROOT/db
+PUBLIC_ROOT=$ROOT/public
 TMP_ROOT=$ROOT/tmp
 DATABASE_FILE_PATH=$DB_ROOT/$DATABASE_NAME
 
 
-if [ "$SUB_COMMAND" = "createdb" ]; then
+if [ "$SUB_COMMAND" = "server" ]; then
+  # Ref) http://php.net/manual/ja/features.commandline.webserver.php
+  php -S localhost:8000 -t $PUBLIC_ROOT/
+elif [ "$SUB_COMMAND" = "createdb" ]; then
   sqlite3 $DATABASE_FILE_PATH << _EOT_
   CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
