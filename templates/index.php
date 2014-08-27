@@ -11,11 +11,21 @@
   <?php render('partials/notification.php', array('notification' => $notification)) ?>
   <?php endif ?>
 
-  <ul>
-  <?php foreach ($products as $index => $row) : ?>
-    <li><a href="/products/show.php?id=<?= h($row['id']) ?>"><?= h($row['title']) ?></a></li>
+  <?php foreach ($products as $index => $product) : ?>
+  <div>
+    <h3><a href="/products/show.php?id=<?= h($product['id']) ?>"><?= h($product['title']) ?></a></h3>
+    <ul>
+      <li><a href="<?= h($product['url']) ?>" target="_blank"><?= h($product['url']) ?></a></li>
+      <?php if ($product['description']) : ?>
+        <li><?= h($product['description']) ?></li>
+      <?php endif ?>
+    </ul>
+  </div>
   <?php endforeach ?>
-  </ul>
+
+  <div class="more">
+    <a href="#">もっと見る</a>
+  </div>
 
   <?php render('partials/footer.php') ?>
 </body>

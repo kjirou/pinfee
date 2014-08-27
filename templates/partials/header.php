@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a href="/products/create.php">サービスを登録する</a></li>
-      <li><a href="javascript:void(0)">(検索フォームを開く)</a></li>
+      <li><a href="javascript:void(0)">(検索)</a></li>
     </ul>
   </nav>
 </header>
