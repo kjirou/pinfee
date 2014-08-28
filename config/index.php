@@ -59,8 +59,10 @@ require_once LIB_ROOT . '/validation/index.php';
 //
 // Configuration by Server API
 //
-if (php_sapi_name() === 'cli') {
+$sapi_name = php_sapi_name();
+if ($sapi_name === 'cli') {
     require_once CONFIG_ROOT . '/cli.php';
 } else {
+    // "cli-server", "apache2handler" etc
     require_once CONFIG_ROOT . '/http.php';
 }
