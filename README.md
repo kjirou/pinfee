@@ -7,6 +7,7 @@ pinfee
 ### 開発環境を用意する
 
 - `PHP >= 5.4`
+  - `Composer`
 - `sqlite3 >= 3.7.13`
 - `Apache >= 2.2`
 
