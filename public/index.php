@@ -1,6 +1,9 @@
 <?php
 require_once '../config/index.php';
 
+use Pinfee\Pagination\Paginator;
+
+
 $db = get_db_object();
 $sql = 'SELECT * FROM products ORDER BY created_at DESC;';
 $cursor = $db->query($sql);
