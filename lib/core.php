@@ -23,6 +23,11 @@ function get_db_object() {
     return $_DB;
 }
 
+/** SQLite3 の LIKE クエリをエスケープする */
+function escape_like_query($query, $escape_character = '$') {
+    return preg_replace('/([$%_])/', $escape_character . '$1', $query);
+}
+
 /** プロセスを終了する。バッチ終了時にも使用する */
 function exit_process() {
     $db = get_db_object();

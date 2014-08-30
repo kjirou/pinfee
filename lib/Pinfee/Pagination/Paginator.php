@@ -28,15 +28,20 @@ class Paginator
             'rows_per_page' => $this->rows_per_page,
             'total_row_count' => $this->total_row_count,
             'page_number' => $this->page_number,
+            'page_index' => null,
             'page_count' => intval(ceil($this->total_row_count / $this->rows_per_page)),
             'first' => 1,
             'last' => null,
             'previous' => null,
             'next' => null,
             'range' => array($this->page_number),
-            'from_row_count' => null,
+            'from_row_count' => 0,
             'to_row_count' => null
         );
+
+        if ($results['page_number'] > 0) {
+            $results['page_index'] = $results['page_number'] - 1;
+        }
 
         if ($results['page_count'] > 0) {
             $results['last'] = $results['page_count'];
@@ -49,6 +54,10 @@ class Paginator
         $next = $results['page_number'] + 1;
         if ($results['last'] >= $next) {
             $results['next'] = $next;
+        }
+
+        if ($results['page_index']) {
+            $results['from_row_count'] = $results['rows_per_page'] * $results['page_index'];
         }
 
         return $results;
