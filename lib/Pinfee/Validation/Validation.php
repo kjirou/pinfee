@@ -1,5 +1,5 @@
 <?php
-namespace Pinfee;
+namespace Pinfee\Validation;
 
 
 class Validation

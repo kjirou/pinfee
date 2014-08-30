@@ -1,7 +1,7 @@
 <?php
 require_once '../../config/index.php';
 
-use Pinfee\Validation;
+use Pinfee\Validation\Validation;
 
 
 $inputs = array_merge(array(
