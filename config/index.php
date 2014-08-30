@@ -10,14 +10,16 @@ define('DB_ROOT', ROOT . '/db');
 define('LIB_ROOT', ROOT . '/lib');
 define('TEMPLATES_ROOT', ROOT . '/templates');
 define('TMP_ROOT', ROOT . '/tmp');
+define('VENDOR_ROOT', ROOT . '/vendor');
 define('SESSIONS_ROOT', TMP_ROOT . '/sessions');
 set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 
 
 //
-// Environments, Consts and Global Variables
+// Environments, Vendors, Consts and Global Variables
 //
 require_once 'config/environments.php';
+require_once VENDOR_ROOT . '/autoload.php';
 define('SITE_NAME', 'Pinfee');
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');

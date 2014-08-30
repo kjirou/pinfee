@@ -7,7 +7,7 @@ pinfee
 ### 開発環境を用意する
 
 - `PHP >= 5.4`
-- `sqlite3`
+- `sqlite3 >= 3.7.13`
 - `Apache >= 2.2`
 
 ### 開発環境を動かす
@@ -15,9 +15,10 @@ pinfee
 ```
 git clone git@github.com:kjirou/pinfee.git
 cd pinfee
+composer install
 ./scripts/manage.sh init
 cp config/environments.example.php config/environments.php
-./scripts/manage.sh server
+./scripts/manage.sh server  # 別のウィンドウで実行する
 open http://localhost:8000  # Mac のみ、ブラウザでこのURLを開くのと同じ
 ```
 
@@ -52,4 +53,27 @@ open http://localhost:8000  # Mac のみ、ブラウザでこのURLを開くの�
 
 ```
 ./scripts/manage.sh purgedb
+```
+
+
+### Composer Cheetsheet
+
+初期化する:
+
+```
+composer install
+```
+
+更新する:
+
+`composer.json` へ追加・削除して実行する。
+
+```
+composer update
+```
+
+インストールされているパッケージの一覧を見る:
+
+```
+composer show -i
 ```
