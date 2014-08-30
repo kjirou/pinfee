@@ -1,6 +1,8 @@
 <?php
 require_once '../../config/index.php';
 
+use Pinfee\Validation;
+
 
 $inputs = array_merge(array(
     'email' => '',
@@ -18,7 +20,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'POST':
-        if (!validation\validate_email($inputs['email'])) {
+        if (!Validation::validateEmail($inputs['email'])) {
             $errors['email'] = true;
         }
 

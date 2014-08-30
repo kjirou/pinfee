@@ -19,7 +19,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 // Environments, Vendors, Consts and Global Variables
 //
 require_once 'config/environments.php';
-require_once VENDOR_ROOT . '/autoload.php';
+$composer_loader = require_once VENDOR_ROOT . '/autoload.php';
+$composer_loader->add('Pinfee', LIB_ROOT);
 define('SITE_NAME', 'Pinfee');
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');
@@ -55,7 +56,6 @@ $_DB = new SQLite3(DB_ROOT . '/' . DATABASE_FILE_NAME);
 // Requirements
 //
 require_once LIB_ROOT . '/core.php';
-require_once LIB_ROOT . '/validation/index.php';
 
 
 //

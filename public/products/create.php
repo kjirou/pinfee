@@ -1,6 +1,9 @@
 <?php
 require_once '../../config/index.php';
 
+use Pinfee\Validation;
+
+
 $inputs = array(
     'url' => '',
     'title' => '',
@@ -22,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $inputs = array_merge($inputs, $_POST);
 
-        if (!validation\validate_url($inputs['url'])) {
+        if (!Validation::validateUrl($inputs['url'])) {
             $errors['url'] = true;
         }
         if ($inputs['title'] === '') {
