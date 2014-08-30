@@ -3,7 +3,7 @@
 //
 // Path Definition
 //
-define('ROOT', dirname(__FILE__) . '/..');
+define('ROOT', __DIR__ . '/..');
 define('APP_ROOT', ROOT . '/app');
 define('CONFIG_ROOT', ROOT . '/config');
 define('DB_ROOT', ROOT . '/db');
