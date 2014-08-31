@@ -3,21 +3,24 @@
 //
 // Path Definition
 //
-define('ROOT', dirname(__FILE__) . '/..');
+define('ROOT', __DIR__ . '/..');
 define('APP_ROOT', ROOT . '/app');
 define('CONFIG_ROOT', ROOT . '/config');
 define('DB_ROOT', ROOT . '/db');
 define('LIB_ROOT', ROOT . '/lib');
 define('TEMPLATES_ROOT', ROOT . '/templates');
 define('TMP_ROOT', ROOT . '/tmp');
+define('VENDOR_ROOT', ROOT . '/vendor');
 define('SESSIONS_ROOT', TMP_ROOT . '/sessions');
 set_include_path(get_include_path() . PATH_SEPARATOR . ROOT);
 
 
 //
-// Environments, Consts and Global Variables
+// Environments, Vendors, Consts and Global Variables
 //
 require_once 'config/environments.php';
+$composer_loader = require_once VENDOR_ROOT . '/autoload.php';
+$composer_loader->add('Pinfee', LIB_ROOT);
 define('SITE_NAME', 'Pinfee');
 define('ENCODING', 'UTF-8');
 define('SESSION_FLASHES_NAMESPACE', '__flashes__');
@@ -53,7 +56,6 @@ $_DB = new SQLite3(DB_ROOT . '/' . DATABASE_FILE_NAME);
 // Requirements
 //
 require_once LIB_ROOT . '/core.php';
-require_once LIB_ROOT . '/validation/index.php';
 
 
 //

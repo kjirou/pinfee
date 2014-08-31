@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/index.php';
 
+
 $inputs = array_merge(array(
     'product_id' => '',
     'body' => '',
