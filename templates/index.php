@@ -36,19 +36,45 @@
     <?php endforeach ?>
   </div>
 
-  <div class="more">
-    <a href="javascript:void(0);" class="js-more-button">もっと見る</a>
+  <?php if (!$pagination['is_last_or_above']) : ?>
+  <div class="more js-more-products-button-container">
+    <a href="javascript:void(0);" class="js-more-products-button">もっと見る</a>
   </div>
+  <?php endif ?>
+  <?php // このページはWeb-APIとしても使われるので読み込み終了フラグを別途渡している ?>
+  <input type="hidden" class="js-is-enabled-more-products"
+    value="<?= h($pagination['is_last_or_above'] ? 0 : 1) ?>" />
 
   <?php render('partials/footer.php') ?>
 
   <script>
-    $('.js-more-button').on('mousedown', function(){
+  (function(){
+    var productsSelector = '.js-products:first';
+    var $products = $(productsSelector);
+    var moreProductsButtonSelector = '.js-more-products-button-container:first';
+    var isEnabledMoreProductsSelector = '.js-is-enabled-more-products:first';
+
+    var createNextPageApiUrl = function(url){
+      var urlObj = new URL(url);
+      var qs = Pinfee.replaceQueryStringPageNumberToNext(urlObj.search);
+      return urlObj.origin + urlObj.pathname + '?' + qs;
+    };
+
+    // もっと読むボタン
+    var apiUrl = createNextPageApiUrl(document.URL);
+    $('.js-more-products-button').on('mousedown', function(){
       Pinfee.showCover();
-      Pinfee.autoPagerize('/index.php?page=1', '.js-products', '.js-products-item').then(function(){
+      Pinfee.autoPagerize(apiUrl, productsSelector, '.js-products-item').then(function(data){
+        apiUrl = createNextPageApiUrl(apiUrl);
+        // 最終ページだったか
+        var isLastPage = data.$doc.find(isEnabledMoreProductsSelector).val() === '0';
+        if (isLastPage) {
+          $(moreProductsButtonSelector).hide();
+        }
         Pinfee.hideCover();
       });
     });
+  })();
   </script>
 </body>
 </html>

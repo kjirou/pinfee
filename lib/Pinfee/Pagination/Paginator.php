@@ -32,6 +32,10 @@ class Paginator
             'page_count' => intval(ceil($this->total_row_count / $this->rows_per_page)),
             'first' => 1,
             'last' => null,
+            // 1 ページ目かそれ以下のページ番号か
+            'is_first_or_below' => false,
+            // 最終ページ目かそれ以上のページ番号か
+            'is_last_or_above' => false,
             'previous' => null,
             'next' => null,
             'range' => array($this->page_number),
@@ -47,7 +51,15 @@ class Paginator
             $results['last'] = $results['page_count'];
         }
 
-        if ($results['page_number'] > 1) {
+        if ($results['page_number'] <= $results['first']) {
+            $results['is_first_or_below'] = true;
+        }
+
+        if ($results['page_number'] >= $results['last']) {
+            $results['is_last_or_above'] = true;
+        }
+
+        if ($results['page_number'] > $results['first']) {
             $results['previous'] = $results['page_number'] - 1;
         }
 

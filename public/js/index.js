@@ -23,21 +23,42 @@ Pinfee.hideCover = function(){
 };
 
 /**
+ * Query-String の中に含まれているページ番号を 1 増やす
+ *
+ * @return {String} e.g. 'a=1&b=2&c=3', '?'は無い
+ */
+Pinfee.replaceQueryStringPageNumberToNext = function(qs){
+  var params = querystring.parse(qs);
+  if ('page' in params) {
+    params.page = ~~params.page + 1;
+  } else {
+    params.page = 2;  // なしは 1 ページ目だったと判断する
+  }
+  return querystring.stringify(params);
+};
+
+/**
  * HTMLページをWeb-APIとして使用し、現ページのリストへアイテムを追加する
  *
- * @return {$.Deferred}
+ * @return {jQuery.Deferred promise} ({$doc})
  */
 Pinfee.autoPagerize = function(apiUrl, itemsSelector, itemSelector){
-  return $.ajax({
+  var dfd = new $.Deferred();
+  $.ajax({
     url: apiUrl,
     dataType: 'html',
     success: function(data){
       var $items = $(itemsSelector);
       var doc = (new DOMParser()).parseFromString(data, 'text/html');
-      var $newItems = $(doc).find(itemsSelector).find(itemSelector);
+      var $doc = $(doc);
+      var $newItems = $doc.find(itemsSelector).find(itemSelector);
       $newItems.each(function(i, el){
         $items.append($(el));
       });
+      dfd.resolve({
+        $doc: $doc
+      });
     }
   });
+  return dfd.promise();
 };

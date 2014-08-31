@@ -12,7 +12,7 @@ $inputs = array_merge(array(
 $db = get_db_object();
 
 // 1 ページの最大件数
-$rows_per_page = 10;
+$rows_per_page = 5;
 
 // 現在ページ数
 $page = intval($inputs['page']);
