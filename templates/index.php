@@ -21,6 +21,8 @@
   <div class="js-products">
     <?php foreach ($products as $index => $product) : ?>
     <div class="caset js-products-item">
+      <a class="like-circle" href="javascript:void(0);">LIKE?</a>
+      <!-- <a class="icon32 icon-pin pin" href="javascript:void(0)">LIKE!</a> -->
       <h2><a href="/products/show.php?id=<?= h($product['id']) ?>"><?= h($product['title']) ?></a></h2>
       <ul>
         <li><a href="<?= h($product['url']) ?>" class="url" target="_blank"><?= h($product['url']) ?></a></li>
