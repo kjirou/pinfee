@@ -81,7 +81,9 @@ function compile_template($file_path, $locals = array()) {
 
 /** render 時に必ず渡される変数を生成する */
 function create_static_locals() {
+    global $DEBUG;
     return array(
+        'debug' => $DEBUG,
         'site_name' => SITE_NAME,
     );
 }

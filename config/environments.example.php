@@ -6,3 +6,6 @@ define('DATABASE_FILE_NAME', 'pinfee_dev.db');
 // エラー表示とその程度
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+
+// 開発中フラグ
+$DEBUG = true;
