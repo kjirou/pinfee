@@ -1,8 +1,6 @@
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
-
-/* ref) http://kojika17.com/2013/06/clearfix-2013.html */
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -14,64 +12,282 @@ h1, h2, h3, h4, h5, h6 {
 .clearfix {
   *zoom: 1;
 }
-
-
 body {
   margin: 0 auto;
   padding-top: 48px;
-  width: 320px;
-  border: solid 1px #000;
+  background-color: #f3f3f3;
+  color: rgba(0,0,0,0.8);
+  font-family: "Lucida Grande", "segoe UI", "ヒラギノ丸ゴ ProN W4", "Hiragino Maru Gothic ProN", Meiryo, Arial, sans-serif;
 }
-
 header {
   position: fixed;
+  z-index: 10;
   top: 0;
-  width: 320px;
+  width: 100%;
   height: 48px;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: #f3f3f3;
+  border-bottom: solid #333 2px;
 }
-
 header h1 {
   position: absolute;
-  mergin: 0;
+  margin: 0 8px;
   top: 0;
   height: 100%;
   width: 30%;
   z-index: 1;
 }
-
+header h1 a {
+  font-size: 32px;
+  font-family: 'Fredoka One', cursive;
+  font-weight: normal;
+  text-decoration: none;
+  color: #000;
+  line-height: 48px;
+}
 header nav {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 80%;
+  right: 2%;
 }
-
+header nav ul {
+  margin: 0;
+}
 header nav ul li {
   margin-left: 5px;
   float: left;
+  height: 48px;
+  list-style-type: none;
+  font-size: 80%;
+  border-left: solid 2px #333; 
+}
+.magnifier {
+  display: block;
+  margin-left: 12px;
+  width: 48px;
+  height: 48px;
+  background: url(../svg/magnifier.svg) no-repeat center center;
+  background-size: 32px;
+  text-indent:100%;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.register {
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  margin-left: 12px;
+  margin-right: 12px;
+  color: #333;
+  text-decoration: none;
 }
 
-.more {
-  margin-top: 10px;
+.more a {
+  display: block;
+  margin: 20px 4% 40px;
+  padding: 20px;
   text-align: center;
+  background-color: #2980b9;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
 }
-
+.more a:hover {
+  background-color: #3498db;  
+}
 footer h6 {
   text-align: center;
   text-border: bold;
 }
-
 footer p {
   font-size: 0.5em;
   text-align: center;
 }
-
 footer form {
   text-align: center;
 }
-
 footer div {
   text-align: center;
+}
+
+
+.caset {
+  position: relative;
+  margin: 40px 4% 40px;
+  background-color: #fff;
+  box-shadow: rgba(0,0,0,0.1) 4px 4px;
+}
+.caset h2 {
+  padding: 20px 20px 0;
+  font-size: 32px;
+}
+.caset h2 a {
+  text-decoration: none;
+  color: #2980b9;
+}
+.caset ul {	
+  margin: 0;
+  padding: 0;
+}
+.caset ul li {
+	margin: 0;
+	padding: 0 20px;
+	list-style-type: none;
+}
+.caset .url {
+  font-size: 12px;
+  color: #2980b9;
+  text-decoration: none;
+}
+.caset .sub {
+  margin-top: 20px;
+  font-size: 100%;
+}
+ul.score {
+  margin-top: 20px;
+}
+.score li.comment,
+.score li.like {
+  display: block;
+  text-align: center;
+  height: 60px;
+  border-top: solid 1px #eee;
+  line-height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'Fredoka One', cursive;
+}
+
+.icon-comment {
+  background: url(../svg/comment.svg) no-repeat center center;
+}
+.icon-pin-slash {
+  background: url(../svg/pin-slash.svg) no-repeat center center;
+}
+.icon-pin {
+  background: url(../svg/pin.svg) no-repeat center center;
+}
+
+.icon32 {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  background-size: 32px 32px;
+}
+.card {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+
+.like-circle {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  line-height: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 100%;
+  background-color: #1abc9c;
+  font-family: 'Fugaz One', cursive;
+}
+.pin {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  margin-left: -60px;
+  padding-left: 60px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Fugaz One', cursive;
+  color: #333;
+}
+
+.newsletter {
+  padding: 12px 24px;
+  background: url(../img/newsletter.png) repeat-x #fff;
+  background-size: 46px 4px;
+}
+.newsletter .caps {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 8px 0;
+  padding: 0;
+}
+.newsletter .sub {
+  font-size: 14px;
+  margin: 8px 0;
+  padding: 0;
+}
+.newsletter:after {
+  background: url(../img/newsletter.png) repeat-x;
+}
+.newsletter .enter-input {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px;
+  width: 80%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: solid 4px #ccc;
+}
+.newsletter .submit-input {
+  display: block;
+  margin: 12px auto 24px;
+  padding: 8px;
+  width: 30%;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #2980b9;
+  line-height: 16px;
+  cursor: hand;
+  color: #fff;
+}
+.newsletter .submit-input:hover {
+  cursor: hand;  
+}
+
+.about {
+  padding: 12px 24px;
+}
+.about h6 {
+  font-size: 40px;
+  font-family: 'Fredoka One', cursive;
+  font-weight: normal;
+}
+.about p {
+  font-size: 14px;
+}
+.about a.inquiry {
+  display: block;
+  margin: 12px auto 24px;
+  padding: 8px;
+  width: 30%;
+  height: 24px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #2980b9;
+  line-height: 24px;
+  cursor: hand;
+  color: #fff;
+  text-decoration: none;
 }
