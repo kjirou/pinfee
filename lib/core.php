@@ -1,6 +1,7 @@
 <?php
 
-function array_all($array) {
+function array_all($array)
+{
     foreach ($array as $value) {
         if (!$value) {
             return false;
@@ -9,7 +10,8 @@ function array_all($array) {
     return true;
 }
 
-function array_any($array) {
+function array_any($array)
+{
     foreach ($array as $value) {
         if ($value) {
             return true;
@@ -18,25 +20,29 @@ function array_any($array) {
     return false;
 }
 
-function get_db_object() {
+function get_db_object()
+{
     global $_DB;
     return $_DB;
 }
 
 /** SQLite3 の LIKE クエリをエスケープする */
-function escape_like_query($query, $escape_character = '$') {
+function escape_like_query($query, $escape_character = '$')
+{
     return preg_replace('/([$%_])/', $escape_character . '$1', $query);
 }
 
 /** プロセスを終了する。バッチ終了時にも使用する */
-function exit_process() {
+function exit_process()
+{
     $db = get_db_object();
     $db->close();
     exit(0);
 }
 
 /** HTTP プロセスを終了する */
-function exit_http() {
+function exit_http()
+{
     $db = get_db_object();
     $db_result_code = $db->lastErrorCode();
     // Ref) http://www.sqlite.org/c3ref/c_abort.html
@@ -48,12 +54,14 @@ function exit_http() {
 }
 
 /** セッションへ flash 変数(一度だけ抽出できる変数)を格納する */
-function set_flash($key, $value) {
+function set_flash($key, $value)
+{
     $_SESSION[SESSION_FLASHES_NAMESPACE][$key] = $value;
 }
 
 /** セッションから flash 変数を取得する */
-function get_flash($key) {
+function get_flash($key)
+{
     $value = null;
     if (array_key_exists($key, $_SESSION[SESSION_FLASHES_NAMESPACE])) {
         $value = $_SESSION[SESSION_FLASHES_NAMESPACE][$key];
@@ -62,7 +70,8 @@ function get_flash($key) {
     return $value;
 }
 
-function redirect($url_or_path, $options = array()) {
+function redirect($url_or_path, $options = array())
+{
     $options = array_merge(array(
         'code' => null,
     ), $options);
@@ -70,7 +79,8 @@ function redirect($url_or_path, $options = array()) {
     exit_http();
 }
 
-function render_template($file_path, $locals = array()) {
+function render_template($file_path, $locals = array())
+{
     extract($locals, EXTR_SKIP);
     ob_start();
     require $file_path;
@@ -80,7 +90,8 @@ function render_template($file_path, $locals = array()) {
 }
 
 /** render 時に必ず渡される変数を生成する */
-function create_static_locals() {
+function create_static_locals()
+{
     global $DEBUG;
     return array(
         'debug' => $DEBUG,
@@ -89,13 +100,15 @@ function create_static_locals() {
 }
 
 /** テンプレートを描画して文字列を返す */
-function render($template_file_path, $locals = array()) {
+function render($template_file_path, $locals = array())
+{
     $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
     return render_template($file_path, array_merge($locals, create_static_locals()));
 }
 
 /** ページを描画して文字列を返す */
-function render_page($options = array()) {
+function render_page($options = array())
+{
     $options = array_merge(array(
         'layout_template_file_path' => '_layout.php',
         'layout_locals' => array(),
@@ -113,7 +126,8 @@ function render_page($options = array()) {
 }
 
 /** ページを描画して終了する */
-function send_page_response($content_template_file_path, $content_locals = array()) {
+function send_page_response($content_template_file_path, $content_locals = array())
+{
     echo render_page(array(
         'content_template_file_path' => $content_template_file_path,
         'content_locals' => $content_locals
@@ -121,6 +135,7 @@ function send_page_response($content_template_file_path, $content_locals = array
     exit_http();
 }
 
-function h($string) {
+function h($string)
+{
     return htmlspecialchars($string, ENT_QUOTES, ENCODING);
 }
