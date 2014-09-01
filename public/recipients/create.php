@@ -13,7 +13,7 @@ $errors = array(
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        render_and_exit('recipients/create.php', array(
+        send_page_response('recipients/create.php', array(
             'inputs' => $inputs,
             'errors' => $errors,
         ));
@@ -25,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if (array_any($errors) > 0) {
-            render_and_exit('recipients/create.php', array(
+            send_page_response('recipients/create.php', array(
                 'inputs' => $inputs,
                 'errors' => $errors,
             ));

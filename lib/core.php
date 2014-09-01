@@ -70,7 +70,7 @@ function redirect($url_or_path, $options = array()) {
     exit_http();
 }
 
-function compile_template($file_path, $locals = array()) {
+function render_template($file_path, $locals = array()) {
     extract($locals, EXTR_SKIP);
     ob_start();
     require $file_path;
@@ -88,25 +88,37 @@ function create_static_locals() {
     );
 }
 
-function _render($template_file_path, $locals = array(), $options = array()) {
-    $options = array_merge(array(
-        'should_exit' => false,
-    ), $options);
-    $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
-    echo compile_template($file_path, array_merge($locals, create_static_locals()));
-    if ($options['should_exit']) {
-        exit_http();
-    }
-}
-
-/** テンプレートを描画する、終了はしない */
+/** テンプレートを描画して文字列を返す */
 function render($template_file_path, $locals = array()) {
-    return _render($template_file_path, $locals);
+    $file_path = TEMPLATES_ROOT . '/' . $template_file_path;
+    return render_template($file_path, array_merge($locals, create_static_locals()));
 }
 
-/** テンプレートを描画して終了する */
-function render_and_exit($template_file_path, $locals = array()) {
-    return _render($template_file_path, $locals, array('should_exit' => true));
+/** ページを描画して文字列を返す */
+function render_page($options = array()) {
+    $options = array_merge(array(
+        'layout_template_file_path' => '_layout.php',
+        'layout_locals' => array(),
+        'content_template_file_path' => null,
+        'content_locals' => array()
+    ), $options);
+
+    $content = '';
+    if ($options['content_template_file_path']) {
+        $content = render($options['content_template_file_path'], $options['content_locals']);
+    }
+    $options['layout_locals']['content'] = $content;
+
+    return render($options['layout_template_file_path'], $options['layout_locals']);
+}
+
+/** ページを描画して終了する */
+function send_page_response($content_template_file_path, $content_locals = array()) {
+    echo render_page(array(
+        'content_template_file_path' => $content_template_file_path,
+        'content_locals' => $content_locals
+    ));
+    exit_http();
 }
 
 function h($string) {

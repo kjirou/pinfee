@@ -26,7 +26,7 @@ if (!$product) {
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        render_and_exit('comments/create.php', array(
+        send_page_response('comments/create.php', array(
             'inputs' => $inputs,
             'errors' => $errors,
             'product' => $product,
@@ -39,7 +39,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if (array_any($errors) > 0) {
-            render_and_exit('comments/create.php', array(
+            send_page_response('comments/create.php', array(
                 'inputs' => $inputs,
                 'errors' => $errors,
                 'product' => $product,

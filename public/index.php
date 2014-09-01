@@ -77,9 +77,9 @@ while ($row = $cursor->fetchArray(SQLITE3_ASSOC)) {
     $products[] = $row;
 }
 
-render_and_exit('index.php', array(
+send_page_response('index.php', array(
     'products' => $products,
     'pagination' => $pagination,
-    'notification' => get_flash($FLASH_KEYS['pages.index.notification']),
+    'notification' => get_flash($FLASH_KEYS['pages.index.notification'])
 ));
 ?>
