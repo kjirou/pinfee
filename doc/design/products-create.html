@@ -16,28 +16,29 @@
     </nav>
   </header>
 
+  <div>
+    <h2>サービスを登録する</h2>
 
-  <h2>サービスを登録する</h2>
+    <form action="./create.php" method="post">
+      <div>
+        <input type="text" name="title" value="" placeholder="例えば、Pinfee" />
+      </div>
+      <div>
+        <input type="text" name="url" value="" placeholder="例えば、http://pinfee.com" />
+      </div>
+      <div>
+        <textarea name="description" placeholder="例えば、プロダクト一覧をみたいときに便利です。
+  商品の説明などはここに記入することでユーザーがわかりやすくなります。
+  記入していただくのがオススメです。"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="上記の内容で登録する" />
+      </div>
+    </form>
 
-  <form action="./create.php" method="post">
-    <div>
-      <input type="text" name="title" value="" placeholder="例えば、Pinfee" />
+    <div class="more">
+      <a href="#">もっと見る</a>
     </div>
-    <div>
-      <input type="text" name="url" value="" placeholder="例えば、http://pinfee.com" />
-    </div>
-    <div>
-      <textarea name="description" placeholder="例えば、プロダクト一覧をみたいときに便利です。
-商品の説明などはここに記入することでユーザーがわかりやすくなります。
-記入していただくのがオススメです。"></textarea>
-    </div>
-    <div>
-      <input type="submit" value="上記の内容で登録する" />
-    </div>
-  </form>
-
-  <div class="more">
-    <a href="#">もっと見る</a>
   </div>
 
   <footer>
